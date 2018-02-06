@@ -14,9 +14,13 @@ const booleans = [true, false]
 const primitives = [...numbers, ...strings, ...booleans]
 const definedValues = [null, ...primitives, ...objects, ...arrays]
 const any = [...definedValues, undefined]
+const truthyValues = any.filter(x => x)
+const falsyValues = any.filter(x => !x)
 
 export const anything  =  sample({ data: any, scope: objects })
 export const defined   =  sample({ data: definedValues, scope: objects })
 export const unDefined =  sample({ data: [undefined], scope: objects })
+export const truthy    =  sample({ data: truthyValues, scope: objects })
+export const falsy     =  sample({ data: falsyValues, scope: objects })
 export const data  = x => sample({ data: [x], scope: objects })
 export const scope = x => sample({ data: any, scope: [x] })
